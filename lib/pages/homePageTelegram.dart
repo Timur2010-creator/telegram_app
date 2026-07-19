@@ -14,7 +14,8 @@ class HomePageTelegram extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Telegram')), // Верхняя панель приложения с заголовком
+      appBar: AppBar(title: Text('Telegram'), // Шапка приложения с заголовком
+    ), 
       drawer: AppDrawer( // Боковое меню, которое получает состояние темы и обработчик смены темы
         isDarkMode: isDarkMode, 
         onThemeChanged: onThemeChanged,
