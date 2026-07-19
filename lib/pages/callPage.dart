@@ -96,10 +96,10 @@ class CallPage extends StatelessWidget {
                         Row( // Строка со временем, иконкой и статусом
                           children: [
                             Text( // Время после звонка
-                              call['timeAgo']!, // Время после звонка
+                              'Called you: ' + call['timeAgo']!, // Время после звонка
                               style: const TextStyle(
-                                fontSize: 12, // Размер текста
-                                color: Colors.grey, // Цвет текста
+                                fontSize: 14, // Размер текста
+                                color: Colors.black87, // Цвет текста
                               ),
                             ),
 
@@ -114,7 +114,7 @@ class CallPage extends StatelessWidget {
                             const SizedBox(width: 4), // Отступ между иконкой и текстом
 
                             Text( // Информация о звонке
-                              '${isMissed ? 'Пропущен' : 'Принят'} • ${call['duration']}', // Текст о звонке
+                              '${isMissed ? 'Missed call' : 'Accepted call'} • ${call['duration']}', // Текст о звонке
                               style: TextStyle(
                                 fontSize: 13, // Размер текста
                                 color: isMissed ? Colors.red : Colors.green, // Цвет текста по статусу
