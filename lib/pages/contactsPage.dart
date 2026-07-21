@@ -41,8 +41,15 @@ class ContactsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final telegramBlue = const Color(0xFF2AABEE); // цвет Telegram
     return Scaffold(
-      appBar: AppBar(title: const Text('Контакты')),
+      appBar: AppBar(
+      title: const Text('Контакты'),
+      backgroundColor: telegramBlue,
+      foregroundColor: Colors.white,
+      centerTitle: true,
+      elevation: 0,
+      ),
       body: GridView.builder(
         padding: const EdgeInsets.all(16), // Отступы вокруг сетки
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -56,66 +63,62 @@ class ContactsPage extends StatelessWidget {
           final contact = contacts[index]; // Текущий контакт
 
           return Container(
-            padding: const EdgeInsets.all(16), // Внутренний отступ карточки
-            decoration: BoxDecoration(
-              color: Colors.white, // Белый фон карточки
-              borderRadius: BorderRadius.circular(16), // Скругление углов
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05), // Лёгкая тень
-                  blurRadius: 6, // Размытие тени
-                  offset: const Offset(0, 2), // Смещение тени
-                ),
-              ],
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(20)), // Радиус карточек 
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color(0xFF0A1128),
+                  Color(0xFF1B0933),
+                  Color(0xFF3A0066),
+                ],
+              ),
             ),
             child: Column(
-              mainAxisAlignment:
-                  MainAxisAlignment.center, // Центрируем по вертикали
-              crossAxisAlignment:
-                  CrossAxisAlignment.center, // Центрируем по горизонтали
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  radius: 55, // Увеличенный размер аватарки
+                  radius: 55,
                   backgroundImage: NetworkImage(
                     contact['image']!,
-                  ), // Изображение из сети
-                ),
-
-                const SizedBox(height: 16), // Отступ под аватаркой
-
-                Text(
-                  contact['name']!, // Имя контакта
-                  textAlign: TextAlign.center, // Текст по центру
-                  style: const TextStyle(
-                    fontSize: 18, // Размер шрифта имени
-                    fontWeight: FontWeight.bold, // Жирный текст имени
-                    color: Colors.blueGrey, // Цвет имени
                   ),
                 ),
 
-                const SizedBox(height: 10), // Отступ между именем и телефоном
+                const SizedBox(height: 16),
 
                 Text(
-                  contact['phoneNumber']!, // Номер телефона
-                  textAlign: TextAlign.center, // Текст по центру
+                  contact['name']!,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.bold, // Размер шрифта номера
-                    color: Colors.black87, // Цвет телефона
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+
+                const SizedBox(height: 10),
+
+                Text(
+                  contact['phoneNumber']!,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.white,
                   ),
                 ),
                 Column(
-                  // Время посещения: справа от карточки не прилеплено к тексту сообщений
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      contact['lastSeen']!, // Время отправки сообщения
-                      maxLines: 1, // В одну строку
+                      contact['lastSeen']!,
+                      maxLines: 1,
                       style: const TextStyle(
                         fontSize: 12,
-                        color: Colors.black,
-                        fontWeight: FontWeight.normal,
+                        color: Colors.white70,
                       ),
                     ),
                   ],

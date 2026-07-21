@@ -43,9 +43,15 @@ class CallPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final telegramBlue = const Color(0xFF2AABEE); // цвет Telegram
     return Scaffold( // Основной каркас страницы
       appBar: AppBar( // Верхняя панель приложения
         title: const Text('Звонки'), // Заголовок страницы
+        backgroundColor: telegramBlue,
+        foregroundColor: Colors.white,
+        centerTitle: true,
+        elevation: 0,
+
       ),
       body: ListView.builder( // Список для отображения звонков
         padding: const EdgeInsets.all(12), // Внутренние отступы списка
