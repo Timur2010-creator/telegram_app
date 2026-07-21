@@ -43,7 +43,7 @@ class CallPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final telegramBlue = const Color(0xFF2AABEE); // цвет Telegram
+    final telegramBlue = const Color(0xFF2AABEE); // цвет Telegram
     return Scaffold( // Основной каркас страницы
       appBar: AppBar( // Верхняя панель приложения
         title: const Text('Звонки'), // Заголовок страницы
@@ -51,7 +51,6 @@ class CallPage extends StatelessWidget {
         foregroundColor: Colors.white,
         centerTitle: true,
         elevation: 0,
-
       ),
       body: ListView.builder( // Список для отображения звонков
         padding: const EdgeInsets.all(12), // Внутренние отступы списка
@@ -95,35 +94,31 @@ class CallPage extends StatelessWidget {
                             fontWeight: FontWeight.bold, // Жирность текста
                             color: Colors.black87, // Цвет текста
                           ),
+                          maxLines: 1, // Защита от длинного имени
+                          overflow: TextOverflow.ellipsis, // Обрезка многоточием
                         ),
 
                         const SizedBox(height: 4), // Отступ между именем и подстрокой
                         
                         Row( // Строка со временем, иконкой и статусом
                           children: [
-                            Text( // Время после звонка
-                              'Called you: ' + call['timeAgo']!, // Время после звонка
-                              style: const TextStyle(
-                                fontSize: 14, // Размер текста
-                                color: Colors.black87, // Цвет текста
-                              ),
-                            ),
-
-                            const SizedBox(width: 6), // Отступ между временем и иконкой
-
-                            Icon( // Иконка звонка справа
-                               isMissed ? Icons.call_missed : Icons.call_received, // Иконка по статусу
-                               color: isMissed ? Colors.red : Colors.green, // Цвет иконки
-                               size: 20, // Размер иконки
+                            Icon( // Иконка звонка
+                              isMissed ? Icons.call_missed : Icons.call_received, // Иконка по статусу
+                              color: isMissed ? Colors.red : Colors.green, // Цвет иконки
+                              size: 18, // Размер иконки
                             ),
 
                             const SizedBox(width: 4), // Отступ между иконкой и текстом
 
-                            Text( // Информация о звонке
-                              '${isMissed ? 'Missed call' : 'Accepted call'} • ${call['duration']}', // Текст о звонке
-                              style: TextStyle(
-                                fontSize: 13, // Размер текста
-                                color: isMissed ? Colors.red : Colors.green, // Цвет текста по статусу
+                            Expanded( // Защита строки от выхода за границы экрана
+                              child: Text( // Информация о звонке
+                                '${isMissed ? 'Missed' : 'Accepted'} • ${call['duration']} • ${call['timeAgo']}', // Текст о звонке
+                                style: TextStyle(
+                                  fontSize: 13, // Размер текста
+                                  color: isMissed ? Colors.red : Colors.green, // Цвет текста по статусу
+                                ),
+                                maxLines: 1, // Чтобы текст не вылезал
+                                overflow: TextOverflow.ellipsis, // Обрезка если не помещается
                               ),
                             ),
                           ],
