@@ -108,7 +108,7 @@ class CallPage extends StatelessWidget {
                               size: 18, // Размер иконки
                             ),
 
-                            const SizedBox(width: 4), // Отступ между иконкой и текстом
+                        const SizedBox(width: 4), // Отступ между иконкой и текстом
 
                             Expanded( // Защита строки от выхода за границы экрана
                               child: Text( // Информация о звонке

@@ -10,30 +10,35 @@ class ContactsPage extends StatelessWidget {
       'lastSeen': 'Last seen 2m ago', // Последняя активность
       'phoneNumber': '+996220123009', // Номер телефона
       'image': 'https://avatars.mds.yandex.net/i?id=61978395458b43651421108a3a3b24af3d496c9a-12421685-images-thumbs&n=13', // Ссылка на аватарку
+      'status': 'offline'
     },
     {
       'name': 'Максим',
       'lastSeen': 'Last seen at 3:45 PM',
       'phoneNumber': '+996703225654',
       'image': 'https://avatars.mds.yandex.net/i?id=8fdc49a37ef477d27d66c47d1e81e6e28d9cd610-4365707-images-thumbs&n=13',
+      'status': 'offline',
     },
     {
       'name': 'Бека',
       'lastSeen': 'Last seen yesterday at 9:18 PM',
       'phoneNumber': '+996265111222',
       'image':'https://avatars.mds.yandex.net/i?id=e12172e531bbbf62209350215c93bd3dbd1b32e1-4565467-images-thumbs&n=13',
+      'status': 'offline',
     },
     {
       'name': 'tttimur02',
       'lastSeen': 'Online',
       'phoneNumber': '+996700112355',
       'image': 'https://avatars.mds.yandex.net/i?id=1b9d292b10b26aef341487b345c545a825333292-13465740-images-thumbs&n=13',
+      'status': 'online',
     },
     {
       'name': 'Медер байке АВТОРИТЕТ',
       'lastSeen': 'Last seen right now',
       'phoneNumber': '+996666999090',
       'image': 'https://media.licdn.com/dms/image/v2/D4D22AQHABRiBQXzUPw/feedshare-shrink_800/B4DZR1Qp4qHEAo-/0/1737134096081?e=2147483647&v=beta&t=3lVfb2pmwxTnkSLc3bcaVgqIWxjzChNjzXidSudg_PQ',
+      'status': 'offline',
     },
   ];
 
@@ -115,7 +120,7 @@ class ContactsPage extends StatelessWidget {
 
                 const SizedBox(height: 6), 
 
-                Column(
+                Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -128,6 +133,7 @@ class ContactsPage extends StatelessWidget {
                         color: Colors.white54,
                       ),
                     ),
+                    
                   ],
                 ),
               ],
